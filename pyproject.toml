@@ -1,0 +1,18 @@
+[project]
+name = "lovable-project-cloner"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "aiohttp>=3.13.3",
+    "dotenv>=0.9.9",
+    "pydantic>=2.12.5",
+    "pydantic-settings>=2.12.0",
+]
+
+[dependency-groups]
+dev = [
+    "aiohttp-client-cache>=0.14.3",
+    "aiosqlite>=0.22.1",
+]
