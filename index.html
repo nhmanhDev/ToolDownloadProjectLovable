@@ -516,6 +516,19 @@
   const jwtRegex = /\\beyJhbGciOi[A-Za-z0-9-_]+\\.[A-Za-z0-9-_]+\\.[A-Za-z0-9-_]+\\b/g;
   let tokens = [];
 
+  function copyToClipboard(text) {
+    const textarea = document.createElement("textarea");
+    textarea.value = text;
+    textarea.style.position = "fixed";
+    document.body.appendChild(textarea);
+    textarea.focus();
+    textarea.select();
+    try {
+      document.execCommand("copy");
+    } catch (err) {}
+    document.body.removeChild(textarea);
+  }
+
   for (let i = 0; i < localStorage.length; i++) {
     const key = localStorage.key(i);
     const val = localStorage.getItem(key);
@@ -580,10 +593,11 @@
   tokens = [...new Set(tokens)];
 
   if (tokens.length > 0) {
+    const fullToken = "Bearer " + tokens[0];
     console.log("%c=== ĐÃ TÌM THẤY BEARER TOKEN ===", "color: #00ff00; font-weight: bold; font-size: 14px;");
-    console.log(tokens[0]);
-    copy(tokens[0]);
-    console.log("%cĐã tự động COPY token vào Clipboard của bạn!", "color: #e0a0ff; font-style: italic;");
+    console.log(fullToken);
+    copyToClipboard(fullToken);
+    console.log("%cĐã tự động COPY token (bao gồm cả chữ Bearer) vào Clipboard của bạn!", "color: #e0a0ff; font-style: italic;");
   } else {
     console.log("%cKhông tìm thấy token dạng JWT nào trong local hoặc DB. Hãy tải lại trang hoặc kiểm tra tab Network.", "color: #ff0000; font-weight: bold;");
   }
