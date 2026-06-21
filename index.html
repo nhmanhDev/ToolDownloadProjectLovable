@@ -417,7 +417,14 @@
         <button id="save-token-btn" class="btn btn-secondary">Lưu Cấu Hình Token</button>
 
         <div class="script-guide">
-          <p><strong>💡 Lấy token nhanh:</strong> Nhấp nút dưới để sao chép script quét IndexedDB của Firebase Auth. Sau đó dán vào DevTools Console trên Lovable và nhấn Enter.</p>
+          <h4 style="font-size: 0.95rem; font-weight: 600; margin-bottom: 0.75rem; color: #8b5cf6;">💡 Hướng dẫn lấy Token nhanh:</h4>
+          <ol style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 1rem; padding-left: 1.1rem; line-height: 1.5; display: flex; flex-direction: column; gap: 0.35rem;">
+            <li>Mở dự án <strong>Lovable.dev</strong> trên Chrome.</li>
+            <li>Nhấn <strong>F12</strong> (hoặc chuột phải chọn <i>Inspect / Kiểm tra</i>) rồi chuyển sang tab <strong>Console</strong>.</li>
+            <li>Nếu trình duyệt hiện cảnh báo chặn dán code, hãy gõ chữ <code>allow pasting</code> vào Console và nhấn <strong>Enter</strong> để mở khóa.</li>
+            <li>Bấm nút <strong>Sao Chép Script Tự Lấy Token</strong> bên dưới.</li>
+            <li>Quay lại tab Console, dán đoạn mã vừa copy vào và nhấn <strong>Enter</strong>. Token sẽ <strong>tự động được sao chép</strong> vào Clipboard của bạn.</li>
+          </ol>
           <button id="copy-script-btn" class="btn btn-secondary" style="font-size: 0.8rem; padding: 0.5rem 1rem;">
             <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 14px; height: 14px; stroke: var(--text-muted);">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 0 1-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H5.4M9 2.25H18a2.25 2.25 0 0 1 2.25 2.25v12A2.25 2.25 0 0 1 18 18.75H9A2.25 2.25 0 0 1 6.75 16.5v-12A2.25 2.25 0 0 1 9 2.25Z" />
@@ -506,7 +513,7 @@
 
     // TOKEN EXTRACTOR SCRIPT
     const extractorScript = `(async function() {
-  const jwtRegex = /\\\\beyJhbGciOi[A-Za-z0-9-_]+\\\\.[A-Za-z0-9-_]+\\\\.[A-Za-z0-9-_]+\\\\b/g;
+  const jwtRegex = /\\beyJhbGciOi[A-Za-z0-9-_]+\\.[A-Za-z0-9-_]+\\.[A-Za-z0-9-_]+\\b/g;
   let tokens = [];
 
   for (let i = 0; i < localStorage.length; i++) {
